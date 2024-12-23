@@ -25,7 +25,7 @@ export const Formulario=() => {
     }
   return (
     <>
-      <h1>Formulario Final</h1>
+      <h1>Formulario</h1>
       <Menu/>
 
       <label>Nombre</label><br />

@@ -12,6 +12,14 @@ export const Menu = () => {
         <Link href="/Tabla">
             Tabla  
         </Link>
+        <br />
+        <Link href="/RegistroUSer">
+            registrar un nuevo usuario  
+        </Link>
+        <br />
+        <Link href="/Login">
+            Salir   
+        </Link>
     </nav>
     </>
 

@@ -1,10 +1,12 @@
 import { IBoxeador } from "../Interfaces/IBoxeador";
 import { addDoc, collection, doc, getDocs, setDoc } from "firebase/firestore"; 
 import { db } from "./Firebase";
+import { IUser } from "../Interfaces/IUser";
 
 export const registrarBoxeador = async(boxeador:IBoxeador)=>{
     const docRef = await addDoc(collection(db, "boxeador"), boxeador);
 }
+
 export const obtenerBoxeador = async()=>{
     const querySnapshot = await getDocs(collection(db, "boxeador"));
     let boxeadores:IBoxeador[]=[]
@@ -25,5 +27,23 @@ export const obtenerBoxeador = async()=>{
     boxeadores.push(boxeador)
 });
 return boxeadores
+}
 
+export const registerUser = async(user:IUser)=>{
+    const docRef = await addDoc(collection(db, "user"), user);
+}
+
+export const loginUser = async()=>{
+    const querySnapshot = await getDocs(collection(db, "user"));
+    let usuarios:IUser[]=[]
+    querySnapshot.forEach((doc) => {
+    console.log(doc.id, " => ", doc.data());
+    let user:IUser={
+        user:doc.data()["user"],
+        contra:doc.data()["contra"],
+        
+    }
+    usuarios.push(user)
+});
+return usuarios
 }
