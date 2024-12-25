@@ -7,13 +7,13 @@ import Menu from './Menu';
 
 export const Tabla = () => {
   const [TBoxeador, setBoxeador] = useState<IBoxeador[]>([]);
-  const router = useRouter();  // Usamos el enrutador para redirigir
+  const router = useRouter(); 
 
   const handleEliminar = async (boxeador: IBoxeador) => {
     try {
       await eliminarboxeador(boxeador);
       alert("Boxeador eliminado con éxito.");
-      window.location.reload(); // Recarga la página después de eliminar
+      window.location.reload();
     } catch (error) {
       console.error("Error al eliminar el boxeador:", error);
       alert("Hubo un error al eliminar el boxeador.");
@@ -34,9 +34,7 @@ export const Tabla = () => {
     handleObtenerTodo();
   }, []);
 
-  const handleActualizar = (id: string) => {
-    router.push(`/actualizar/${id}`);  // Redirige usando el ID del boxeador
-  };
+
 
   return (
     <>
@@ -67,7 +65,7 @@ export const Tabla = () => {
               <td>{boxeador.derrotas}</td>
               <td>{boxeador.descripcion}</td>
               <td>
-                <button onClick={() => handleActualizar(boxeador.id)}>Actualizar</button>
+                <button>Actualizar</button>
                 <button onClick={() => handleEliminar(boxeador)}>Eliminar</button>
               </td>
             </tr>
