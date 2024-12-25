@@ -1,5 +1,5 @@
 import { IBoxeador } from "../Interfaces/IBoxeador";
-import { addDoc, collection, doc, getDocs, setDoc } from "firebase/firestore"; 
+import { addDoc, collection, deleteDoc, doc, getDoc, getDocs, setDoc, updateDoc } from "firebase/firestore"; 
 import { db } from "./Firebase";
 import { IUser } from "../Interfaces/IUser";
 
@@ -13,6 +13,7 @@ export const obtenerBoxeador = async()=>{
     querySnapshot.forEach((doc) => {
     console.log(doc.id, " => ", doc.data());
     let boxeador:IBoxeador={
+        id: doc.id,
         nombre:doc.data()["nombre"],
         apellido:doc.data()["apellido"],
         edad:doc.data()["edad"],
@@ -47,3 +48,30 @@ export const loginUser = async()=>{
 });
 return usuarios
 }
+
+
+export let eliminarboxeador = async (boxeador:IBoxeador) => {
+    await deleteDoc(doc(db, "boxeador", boxeador.id));
+}
+
+
+
+export const obtenerBoxer = async (id: string) => {
+    const docRef = doc(db, "boxeador", id);
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) {
+        return {
+            id: docSnap.id,
+            nombre: docSnap.data().nombre,
+            apellido: docSnap.data().apellido,
+            edad: docSnap.data().edad,
+            genero: docSnap.data().genero,
+            categoria: docSnap.data().categoria,
+            victorias: docSnap.data().victorias,
+            derrotas: docSnap.data().derrotas,
+            descripcion: docSnap.data().descripcion,
+        };
+    } else {
+        return ;
+    }
+};

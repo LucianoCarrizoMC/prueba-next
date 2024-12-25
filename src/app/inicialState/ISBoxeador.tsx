@@ -1,6 +1,8 @@
 import { IBoxeador } from "../Interfaces/IBoxeador";
 
 export const ISBoxeador:IBoxeador={
+    id:"",
+
     nombre:"",
     apellido:"",
     edad:0,
