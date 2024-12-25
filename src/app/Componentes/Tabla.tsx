@@ -1,9 +1,9 @@
-// Tabla.tsx
 import React, { useState, useEffect } from 'react';
 
 import { IBoxeador } from '../Interfaces/IBoxeador'; 
 import { obtenerBoxeador, eliminarboxeador } from '../Firebase/Promesas';
 import { useRouter } from 'next/navigation';
+import Menu from './Menu';
 
 export const Tabla = () => {
   const [TBoxeador, setBoxeador] = useState<IBoxeador[]>([]);
@@ -39,7 +39,8 @@ export const Tabla = () => {
   };
 
   return (
-    <div>
+    <>
+        <Menu/>
       <table>
         <thead>
           <tr>
@@ -73,7 +74,7 @@ export const Tabla = () => {
           ))}
         </tbody>
       </table>
-    </div>
+    </>
   );
 };
 

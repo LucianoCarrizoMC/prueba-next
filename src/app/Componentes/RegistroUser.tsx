@@ -34,7 +34,7 @@ const RegistroUSer = () => {
       <div>
         <h1>Registro de Usuario</h1>
         <div>
-          <label>Correo:</label>
+          <label>usuario:</label>
           <input
             type="text"
             value={usuario}
